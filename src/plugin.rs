@@ -156,7 +156,7 @@ pub fn ease_system<
                     *object = interpolation::lerp(&EaseValue(C::default()), &next.end, &0.).0;
                 }
 
-                commands.entity(entity).insert(next);
+                commands.entity(entity).try_insert(next);
             } else {
                 commands.entity(entity).remove::<EasingChainComponent<C>>();
             }
@@ -249,7 +249,7 @@ pub fn custom_ease_system<
                     *object = interpolation::lerp(&C::default(), &next.end.0, &0.);
                 }
 
-                commands.entity(entity).insert(next);
+                commands.entity(entity).try_insert(next);
             } else {
                 commands.entity(entity).remove::<EasingChainComponent<C>>();
             }
